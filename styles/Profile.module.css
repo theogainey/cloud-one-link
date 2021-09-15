@@ -1,0 +1,109 @@
+.defaultTheme{
+  --primary-color: #FFFFFF;
+  --secondary-color: #FFFFFF;
+}
+.newTheme{
+  --primary-color: #3f51b5;
+  --secondary-color: #f50057;
+}
+.root{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.drawer{
+  width: 10%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container {
+  width: auto;
+  height: auto;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:  var(--primary-color);
+}
+
+.main {
+  padding: 2rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+}
+.addButton{
+  background-color: inherit;
+  border-style: hidden;
+}
+
+.buttonRoot{
+  margin: .5rem;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  background-color: var(--secondary-color);
+}
+.buttonRoot p{
+  font-size: 1rem;
+}
+.buttonRoot:hover,
+.buttonRoot:active,
+.buttonRoot:focus{
+  border-color: #0070f3;
+
+}
+
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 3rem;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 1rem;
+}
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}

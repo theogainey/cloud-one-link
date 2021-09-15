@@ -1,0 +1,13 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  background-color: var(--secondary-color);
+}
+.iconButton{
+  background-color: inherit;
+  border: none;
+}

@@ -1,0 +1,16 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: inherit;
+}
+
+.iconButton{
+  background-color: inherit;
+  border: none;
+}
