@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Layout from '../components/layout'
 
 export default function Home() {
   return (
+    <Layout home>
     <div className={styles.container}>
       <Head>
         <title>Cloud One-Link</title>
@@ -11,34 +13,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Cloud One-Link
-        </h1>
-
-
-        <div className={styles.grid}>
-          <a href="/api/auth/login" className={styles.card}>
-            <h2>Login &rarr;</h2>
-            <p>Login.</p>
-          </a>
-          <a href="/profile" className={styles.card}>
-            <h2>Profile &rarr;</h2>
-            <p>Profile  </p>
-          </a>
-
-          <a href="/" className={styles.card}>
-            <h2>Sign Up &rarr;</h2>
-            <p>Sign Up.</p>
-          </a>
-
-          <a href="/" className={styles.card}>
-            <h2>About &rarr;</h2>
-            <p>About</p>
-          </a>
-
+        <div className={styles.headingSection}>
+          <div className={styles.surface}>
+            <p className={styles.description}>Build your own personalized social media landing page and deploy it to the cloud instantly!</p>
+          </div>
         </div>
-      </main>
+        <div className={styles.callToActionSection}>
+          <div className={styles.ctaButton}/>
+          <div className={styles.ctaButton}/>
+        </div>
+        <div className={styles.aboutSection}>
+          <h2 className={styles.aboutHeading}>About</h2>
+          <div className={styles.surface}>
+            <p className={styles.aboutText}>Built By Theo Gainey Because </p>
+          </div >
+          <h2 className={styles.aboutHeading}>How It Works!</h2>
+          <div className={styles.surface}>
+            <p className={styles.aboutText}>How it works explainer </p>
+          </div>
+        </div>
+
     </div>
+    </Layout>
   )
 }

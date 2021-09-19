@@ -1,0 +1,35 @@
+.root{
+  width: 100%;
+  height: inherit;
+}
+
+.buttonText{
+  line-height: 1rem;
+  font-size: 1rem;
+}
+
+.buttonRoot{
+  width: 100%;
+  padding:  0.5rem;
+  background-color: #fff;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+
+}
+
+.buttonRoot:hover,
+.buttonRoot:focus,
+.buttonRoot:active {
+  background-color: #e0e0e0;
+
+}
+@media only screen and (max-width: 576px) {
+  .buttonRoot {
+    justify-content: center;
+ }
+}

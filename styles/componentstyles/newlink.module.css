@@ -1,0 +1,38 @@
+.card{
+  width: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 1rem;
+  padding-left: 0rem;
+  margin: 1rem;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+}
+
+.textInput{
+  border-style: hidden;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  background-color: inherit;
+  color: inherit;
+}
+.right{
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0rem 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .card{
+    width: 90%
+  }
+
+}
