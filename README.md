@@ -20,13 +20,14 @@ AUTH0_CLIENT_SECRET=
 MONGODB_URI=
 
 ```
-Application will not function properly beyond the index page without connecting to MongoDB or Auth0
+Application will not function properly beyond the index page without connecting to MongoDB and Auth0
 
 Once connected application can be started with: 
 ```bash
 npm run dev
 ```
 ## Project Structure 
+
 
 ## Learn More
 
