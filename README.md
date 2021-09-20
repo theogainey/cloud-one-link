@@ -2,21 +2,31 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install the required dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm install
 ```
+Next, open `.env.local` and enter the required variables:  
+```
+#Required for AUTH0
+AUTH0_SECRET=
+AUTH0_BASE_URL=
+AUTH0_ISSUER_BASE_URL=
+AUTH0_CLIENT_ID=
+AUTH0_CLIENT_SECRET=
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#Required for MongoDB
+MONGODB_URI=
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+Application will not function properly beyond the index page without connecting to MongoDB or Auth0
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Once connected application can be started with: 
+```bash
+npm run dev
+```
+## Project Structure 
 
 ## Learn More
 
@@ -25,10 +35,15 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To learn more about MongoDB, visit the following pages:
 
-## Deploy on Vercel
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [MongoDB Documentation](https://docs.mongodb.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To Learn more about Auth0, visit the following pages:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Auth0](https://auth0.com/)
+- [Auth0 Next.js SDK](https://github.com/auth0/nextjs-auth0)
+
+## Live Demo
+
