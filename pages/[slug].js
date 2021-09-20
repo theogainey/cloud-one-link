@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import LinkPublicView from '../components/linkpublicview'
 import clientPromise from './../lib/mongodb'
@@ -8,17 +7,16 @@ import clientPromise from './../lib/mongodb'
 export default function LandingPage({data}){
   return(
     <div className={styles.container}>
-    <Head>
-      <title>{data.displayname}</title>
-    </Head>
-
-    <h1>{data.displayname}</h1>
-  {data.links.map((link) => (
-    <React.Fragment key={link.id}>
-      <LinkPublicView url={link.url} text={link.text}/>
-    </React.Fragment>
-    ))}
-  </div>
+      <Head>
+        <title>{data.displayname}</title>
+      </Head>
+      <h1>{data.displayname}</h1>
+      {data.links.map((link) => (
+        <React.Fragment key={link.id}>
+          <LinkPublicView url={link.url} text={link.text}/>
+        </React.Fragment>
+      ))}
+    </div>
   )
 }
 
@@ -43,9 +41,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const client = await clientPromise
-  const test = await client.db("cloudlandingpage").collection("users").findOne({slug: params.slug});
+  const user = await client.db("cloudlandingpage").collection("users").findOne({slug: params.slug});
   var links=[]
-  test.links.forEach((link, i) => {
+  user.links.forEach((link, i) => {
     links.push({
       id: i,
       priority: link.rank,
@@ -55,10 +53,10 @@ export async function getStaticProps({ params }) {
   });
 
   const data = {
-    email: test.email,
-    displayname: test.displayname,
-    slug: test.slug,
-    them: test.theme,
+    email: user.email,
+    displayname: user.displayname,
+    slug: user.slug,
+    them: user.theme,
     links: links
   }
 

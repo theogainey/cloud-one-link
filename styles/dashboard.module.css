@@ -20,6 +20,7 @@
   --background-color: #a2d5c6;
 }
 .root{
+  margin-top: .1rem;
   width: 100vw;
   height: auto;
   display: flex;
@@ -66,6 +67,10 @@
   border-radius: 10px;
   font-size: 1.25rem;
   margin-bottom: 1rem;
+}
+.addButton:hover{
+  background-color: #e0e0e0;
+
 }
 
 

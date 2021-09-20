@@ -13,6 +13,9 @@
   background-color: var(--primary-color);
   color: var(--primary-text);
 }
+.card:hover{
+  background-color: #e0e0e0;
+}
 .left{
   width: auto;
   display: flex;

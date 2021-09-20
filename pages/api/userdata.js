@@ -16,11 +16,7 @@ export default withApiAuthRequired(async function userHandler(req, res) {
 
   switch (method) {
     case 'GET':
-    if (user) {
         res.status(200).json({user});
-      } else {
-        res.status(404).json({ message: `User with email: ${email} not found.` })
-      }
       break
     case 'PUT':
       if (linkrank ) {

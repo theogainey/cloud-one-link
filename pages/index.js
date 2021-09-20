@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
 
 export default function Home() {
+
   return (
-    <Layout home>
+    <Layout >
     <div className={styles.container}>
       <Head>
         <title>Cloud One-Link</title>
@@ -15,22 +15,22 @@ export default function Home() {
 
         <div className={styles.headingSection}>
           <div className={styles.surface}>
-            <p className={styles.description}>Build your own personalized social media landing page and deploy it to the cloud instantly!</p>
+            <p className={styles.description}>Simplify your social media presence by organizing all your relevant links into one mobile optimized landing page. Sign up today and create your own personalized landing page in minutes.</p>
+            <a className={styles.ctaButton} href="/api/auth/login" >
+              Sign Up!
+            </a>
           </div>
-        </div>
-        <div className={styles.callToActionSection}>
-          <div className={styles.ctaButton}/>
-          <div className={styles.ctaButton}/>
         </div>
         <div className={styles.aboutSection}>
-          <h2 className={styles.aboutHeading}>About</h2>
+        <h2 >How It Works!</h2>
+        <div className={styles.surface}>
+          <p className={styles.aboutText}>This project was built using several different technologies. The main framework this project is built around is <a target="_blank" rel="noopener noreferrer" href="https://nextjs.org/" className={styles.link}>Next.js</a>. The reason Next.js was chosen, was that in order to ensure the fastest possible page load times it was decided that the landing pages users can share with the public needed to be statically generated. Because of Next.js’s built in support for <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/" className={styles.link}>React</a> and its ability to easily regenerate static pages, Next.js seemed to be the best fit for this project. In addition to Next.js, data for this project is stored in a <a target="_blank" rel="noopener noreferrer" href="https://www.mongodb.com/cloud/atlas" className={styles.link}>MongoDB Atlas</a> database. Lastly user authentication is implemented using <a target="_blank" rel="noopener noreferrer" href="https://auth0.com/" className={styles.link}>Auth0</a>. For more details feel free to check out this project's <a target="_blank" rel="noopener noreferrer" href="https://github.com/theogainey" className={styles.link}>GitHub repository</a> for more on how it works</p>
+        </div>
+
+          <h2 >About</h2>
           <div className={styles.surface}>
-            <p className={styles.aboutText}>Built By Theo Gainey Because </p>
+            <p className={styles.aboutText}>Theo Gainey built this project to demonstrate some of his skills as a developer. As time goes on more features will be added to future demonstrate new skills and new understandings of different technologies. Please check out his <a target="_blank" rel="noopener noreferrer" href="https://github.com/theogainey" className={styles.link}>GitHub page</a> for more!   </p>
           </div >
-          <h2 className={styles.aboutHeading}>How It Works!</h2>
-          <div className={styles.surface}>
-            <p className={styles.aboutText}>How it works explainer </p>
-          </div>
         </div>
 
     </div>

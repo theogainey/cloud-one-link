@@ -3,7 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link'
 
 
-export default function Layout({children, home,showDrawer, setDrawer}){
+export default function Layout({children, showDrawer, setDrawer}){
   const { user, error, isLoading } = useUser();
 
   return(
@@ -11,7 +11,7 @@ export default function Layout({children, home,showDrawer, setDrawer}){
       <header className={styles.header}>
       <div className={styles.leftSection}>
         {setDrawer &&(<div className={styles.leftButtonRoot} onClick={()=>setDrawer(!showDrawer)}>
-          <svg height="30" width="30" fill={"white"}>
+          <svg height="30" width="30" viewBox={"0 0 24 24"} fill={"white"}>
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
           </svg>
         </div>)}

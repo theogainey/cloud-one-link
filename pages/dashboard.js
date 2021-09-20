@@ -1,15 +1,16 @@
 import React, {useState, useEffect, useReducer} from 'react';
 import Head from 'next/head'
-import { useUser } from '@auth0/nextjs-auth0';
+import {useUser, withPageAuthRequired} from '@auth0/nextjs-auth0';
 import styles from '../styles/dashboard.module.css'
 
 import Layout from '../components/layout'
 import DashboardDrawer from '../components/dashboarddrawer'
 import LinkEditable from '../components/linkeditable'
 import LinkPublicView from '../components/linkpublicview'
-import ThemeSelector from  '../components/themeselector'
 import NewLink from '../components/newlink'
-export default function Dashboard() {
+import SignUp from '../components/signupform'
+
+export default withPageAuthRequired(function Dashboard() {
   const { user, error, isLoading } = useUser();
   const [sortedLinks, setLinks] = useState(null)
   const [userData, setUserdata]= useState(null)
@@ -26,12 +27,6 @@ export default function Dashboard() {
       case "edit":
         state = "edit";
         return state
-      case "theme":
-        state = "theme";
-        return state
-      case "settings":
-        state = "settings";
-        return state
       default:
         return state
       }
@@ -44,14 +39,20 @@ export default function Dashboard() {
         .then(res => res.json())
         .then(data => {
           setUserdata(data.user)
-          setLinks(data.user.links.sort((a, b) => a.rank - b.rank))
+          if (data.user) {
+            if (data.user.links) {
+              setLinks(data.user.links.sort((a, b) => a.rank - b.rank))
+            }
+          }
         })
     }
   }
-  //calls fetchlinks after user is loaded
+
+  //fetch links when user is loaded
   useEffect(() => {
     fetchLinks()
   }, [user])
+
 
   // fetch and sort links, update when changes are made
   useEffect(() => {
@@ -60,18 +61,19 @@ export default function Dashboard() {
 
   return(
     <Layout dispatch={dispatch} showDrawer={showDrawer} setDrawer={setDrawer}>
-    {user && (
       <div className={styles.root}>
         <Head>
-        {userData && (<title>{userData.displayname}</title>)}
+        {userData?(<title>{userData.displayname}</title>):(<title>User Dashboard</title>)}
         </Head>
-        <div className={`${showDrawer? (styles.drawer):(styles.hiddenSection)}`}>
-          {showDrawer &&(<DashboardDrawer dispatch={dispatch}  />)}
-        </div>
-        <div className={styles.container}>
-          {(userData && state==="preview") && (  <h1 className={styles.title}>{userData.displayname}</h1>)}
+      {userData? (
+        <>
+          <div className={`${showDrawer? (styles.drawer):(styles.hiddenSection)}`}>
+            {showDrawer &&(<DashboardDrawer dispatch={dispatch}  />)}
+          </div>
+          <div className={styles.container}>
+            {(userData && state==="preview") && (  <h1 className={styles.title}>{userData.displayname}</h1>)}
             {sortedLinks && (
-              <>
+            <>
               {(state==="edit") &&(
                 sortedLinks.map((link) => (
                 <React.Fragment key={link._id}>
@@ -102,11 +104,15 @@ export default function Dashboard() {
               )}
               </>
               )}
-              {(state==="theme") &&(<ThemeSelector/>)}
-        </div>
-        <div className={styles.hiddenSection}/>
+          </div>
+          <div className={styles.hiddenSection}/>
+        </>
+      ):(
+        <>
+          <SignUp/>
+        </>
+      )}
       </div>
-    )}
     </Layout>
   )
-}
+})
