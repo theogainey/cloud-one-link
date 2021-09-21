@@ -26,10 +26,14 @@ Once connected application can be started with:
 npm run dev
 ```
 ## Project Structure 
-
+- Framework - Next.js 
+- Database - MongoDB Atlas 
+- State Mangement - React.js
+- User Authetication - Auth0
 
 ## Next Steps
-
+- Expanded User Customization - including, but not limited to, custom page themes, social icons and more
+- Analytics 
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
