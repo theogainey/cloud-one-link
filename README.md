@@ -29,6 +29,8 @@ npm run dev
 ## Project Structure 
 
 
+## Next Steps
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -48,3 +50,4 @@ To Learn more about Auth0, visit the following pages:
 
 ## Live Demo
 
+Check out our live demo at http://cloud-one-link.vercel.app/  
