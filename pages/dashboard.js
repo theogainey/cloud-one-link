@@ -33,7 +33,6 @@ export default withPageAuthRequired(function Dashboard() {
   }
 
 
-  // fetch and sort links, update when changes are made
   useEffect(() => {
     async function fetchLinks(){
       if (user) {
@@ -49,7 +48,6 @@ export default withPageAuthRequired(function Dashboard() {
           })
       }
     }
-
     fetchLinks()
   }, [sortedLinks, user])
 

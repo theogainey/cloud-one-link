@@ -17,11 +17,11 @@ export default function Layout({children, showDrawer, setDrawer}){
         </div>)}
       </div>
       <div className={styles.centerSection}>
-        <h1 className={styles.title}>
+        <div className={styles.title}>
           <Link href={"/"}>
             <a>Cloud One-Link</a>
           </Link>
-        </h1>
+        </div>
       </div>
       <div className={styles.rightSection}>
       {user? (

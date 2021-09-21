@@ -53,10 +53,8 @@ export async function getStaticProps({ params }) {
   });
 
   const data = {
-    email: user.email,
     displayname: user.displayname,
     slug: user.slug,
-    them: user.theme,
     links: links
   }
 

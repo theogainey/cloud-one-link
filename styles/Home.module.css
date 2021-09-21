@@ -28,7 +28,7 @@
   align-items: center;
   height: auto;
   width: 80%;
-  text-align: center;
+  text-align:justify;
   line-height: 1.5;
   font-size: 1.5rem;
 
@@ -36,12 +36,11 @@
 .link{
   color: #1976d2;
 }
-.callToActionSection{
-  display: flex;
+.buttonRow{
+  margin-top: 1rem;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 40%
+  justify-content: center;
 }
 .ctaButton{
   background-color: #1976d2;
@@ -72,7 +71,7 @@
   align-items: center;
   height: auto;
   width: 80%;
-  text-align: center;
+  text-align: justify;
   line-height: 1.5;
   font-size: 1.5rem;
 
@@ -81,11 +80,11 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  text-align: center;
 }
 
-.title,
 .description {
-  text-align: center;
+  text-align: justify;
   line-height: 1.5;
   font-size: 1.5rem;
 }

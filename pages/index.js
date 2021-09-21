@@ -17,11 +17,17 @@ export default function Home() {
         <div className={styles.headingSection}>
           <div className={styles.surface}>
             <p className={styles.description}>Simplify your social media presence by organizing all your relevant links into one mobile optimized landing page. Sign up today and create your own personalized landing page in minutes.</p>
-            <Link href={"/api/auth/login"} >
-              <a className={styles.ctaButton}>Sign Up!</a>
-            </Link>
           </div>
         </div>
+        <div className={styles.buttonRow}>
+          <Link href={"/api/auth/login"} >
+            <a className={styles.ctaButton}>Sign Up!</a>
+          </Link>
+          <Link href={"/dashboard"} >
+            <a className={styles.ctaButton}>User Dashboard</a>
+          </Link>
+        </div>
+
         <div className={styles.aboutSection}>
         <h2 >How It Works!</h2>
         <div className={styles.surface}>
@@ -30,7 +36,7 @@ export default function Home() {
 
           <h2 >About</h2>
           <div className={styles.surface}>
-            <p className={styles.aboutText}>Theo Gainey built this project to demonstrate some of his skills as a developer. As time goes on more features will be added to future demonstrate new skills and new understandings of different technologies. Please check out his<Link href={"https://github.com/theogainey/cloud-one-link"}><a target="_blank" rel="noopener noreferrer"  className={styles.link}>GitHub page</a></Link>for more!   </p>
+            <p className={styles.aboutText}>Theo Gainey built this project to demonstrate some of his skills as a developer. As time goes on more features will be added to future demonstrate new skills and new understandings of different technologies. Please check out his <Link href={"https://github.com/theogainey/cloud-one-link"}><a target="_blank" rel="noopener noreferrer"  className={styles.link}>GitHub page</a></Link> for more!   </p>
           </div >
         </div>
 
