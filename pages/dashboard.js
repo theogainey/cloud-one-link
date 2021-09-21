@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useReducer} from 'react';
 import Head from 'next/head'
+import Link from 'next/link'
 import {useUser, withPageAuthRequired} from '@auth0/nextjs-auth0';
 import styles from '../styles/dashboard.module.css'
 
@@ -66,6 +67,10 @@ export default withPageAuthRequired(function Dashboard() {
             {(userData && state==="preview") && (  <h1 className={styles.title}>{userData.displayname}</h1>)}
             {sortedLinks && (
             <>
+              {(state==="edit") &&(<div className={styles.urlBox}>
+                <h2 className={styles.urlHeading}>Page URL: &nbsp;</h2> <Link href={`/${userData.slug}`}><a className={styles.urltext}>{` http://cloud-one-link.vercel.app/${userData.slug}`}</a></Link>
+              </div>
+              )}
               {(state==="edit") &&(
                 sortedLinks.map((link) => (
                 <React.Fragment key={link._id}>
