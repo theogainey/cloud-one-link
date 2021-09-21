@@ -32,32 +32,26 @@ export default withPageAuthRequired(function Dashboard() {
       }
   }
 
-  //function to fetch data for dashboard
-  async function fetchLinks(){
-    if (user) {
-      await fetch(`/api/userdata`)
-        .then(res => res.json())
-        .then(data => {
-          setUserdata(data.user)
-          if (data.user) {
-            if (data.user.links) {
-              setLinks(data.user.links.sort((a, b) => a.rank - b.rank))
-            }
-          }
-        })
-    }
-  }
-
-  //fetch links when user is loaded
-  useEffect(() => {
-    fetchLinks()
-  }, [user])
-
 
   // fetch and sort links, update when changes are made
   useEffect(() => {
+    async function fetchLinks(){
+      if (user) {
+        await fetch(`/api/userdata`)
+          .then(res => res.json())
+          .then(data => {
+            setUserdata(data.user)
+            if (data.user) {
+              if (data.user.links) {
+                setLinks(data.user.links.sort((a, b) => a.rank - b.rank))
+              }
+            }
+          })
+      }
+    }
+
     fetchLinks()
-  }, [sortedLinks])
+  }, [sortedLinks, user])
 
   return(
     <Layout dispatch={dispatch} showDrawer={showDrawer} setDrawer={setDrawer}>
@@ -109,7 +103,7 @@ export default withPageAuthRequired(function Dashboard() {
         </>
       ):(
         <>
-          <SignUp/>
+          {!isLoading &&(<SignUp/>)}
         </>
       )}
       </div>

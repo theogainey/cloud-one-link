@@ -18,18 +18,16 @@ export default function Layout({children, showDrawer, setDrawer}){
       </div>
       <div className={styles.centerSection}>
         <h1 className={styles.title}>
-          <a href={"/"}>Cloud One-Link</a>
+          <Link href={"/"}>
+            <a>Cloud One-Link</a>
+          </Link>
         </h1>
       </div>
       <div className={styles.rightSection}>
       {user? (
-        <a className={styles.rightButtonRoot} href="/api/auth/logout" fill={"white"} >
-          Log Out
-        </a>
+        <Link href="/api/auth/logout"><a className={styles.rightButtonRoot}>Log Out</a></Link>
         ):(
-        <a className={styles.rightButtonRoot} href="/api/auth/login">
-        Log In
-        </a>
+        <Link href="/api/auth/login"><a className={styles.rightButtonRoot}>Log In</a></Link>
         )}
         </div>
       </header>

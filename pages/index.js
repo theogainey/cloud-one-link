@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -16,20 +17,20 @@ export default function Home() {
         <div className={styles.headingSection}>
           <div className={styles.surface}>
             <p className={styles.description}>Simplify your social media presence by organizing all your relevant links into one mobile optimized landing page. Sign up today and create your own personalized landing page in minutes.</p>
-            <a className={styles.ctaButton} href="/api/auth/login" >
-              Sign Up!
-            </a>
+            <Link href={"/api/auth/login"} >
+              <a className={styles.ctaButton}>Sign Up!</a>
+            </Link>
           </div>
         </div>
         <div className={styles.aboutSection}>
         <h2 >How It Works!</h2>
         <div className={styles.surface}>
-          <p className={styles.aboutText}>This project was built using several different technologies. The main framework this project is built around is <a target="_blank" rel="noopener noreferrer" href="https://nextjs.org/" className={styles.link}>Next.js</a>. The reason Next.js was chosen, was that in order to ensure the fastest possible page load times it was decided that the landing pages users can share with the public needed to be statically generated. Because of Next.js’s built in support for <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/" className={styles.link}>React</a> and its ability to easily regenerate static pages, Next.js seemed to be the best fit for this project. In addition to Next.js, data for this project is stored in a <a target="_blank" rel="noopener noreferrer" href="https://www.mongodb.com/cloud/atlas" className={styles.link}>MongoDB Atlas</a> database. Lastly user authentication is implemented using <a target="_blank" rel="noopener noreferrer" href="https://auth0.com/" className={styles.link}>Auth0</a>. For more details feel free to check out this project's <a target="_blank" rel="noopener noreferrer" href="https://github.com/theogainey" className={styles.link}>GitHub repository</a> for more on how it works</p>
+          <p className={styles.aboutText}>This project was built using several different technologies. The main framework this project is built around is <Link href={"https://nextjs.org/"}><a target="_blank" rel="noopener noreferrer" className={styles.link}>Next.js</a></Link>. The reason Next.js was chosen, was that in order to ensure the fastest possible page load times it was decided that the landing pages users can share with the public needed to be statically generated. Because of Next.js’s built in support for<Link href={"https://reactjs.org/"}><a target="_blank" rel="noopener noreferrer" className={styles.link}>React</a></Link> and its ability to easily regenerate static pages, Next.js seemed to be the best fit for this project. In addition to Next.js, data for this project is stored in a <Link href={"https://www.mongodb.com/cloud/atlas"}><a target="_blank" rel="noopener noreferrer"  className={styles.link}>MongoDB Atlas</a></Link> database. Lastly user authentication is implemented using <Link href={"https://auth0.com/"}><a target="_blank" rel="noopener noreferrer"  className={styles.link}>Auth0</a></Link>. For more details feel free to check out this project&aposs <Link href={"https://github.com/theogainey/cloud-one-link"}><a target="_blank" rel="noopener noreferrer" className={styles.link}>GitHub repository</a></Link> for more on how it works</p>
         </div>
 
           <h2 >About</h2>
           <div className={styles.surface}>
-            <p className={styles.aboutText}>Theo Gainey built this project to demonstrate some of his skills as a developer. As time goes on more features will be added to future demonstrate new skills and new understandings of different technologies. Please check out his <a target="_blank" rel="noopener noreferrer" href="https://github.com/theogainey" className={styles.link}>GitHub page</a> for more!   </p>
+            <p className={styles.aboutText}>Theo Gainey built this project to demonstrate some of his skills as a developer. As time goes on more features will be added to future demonstrate new skills and new understandings of different technologies. Please check out his<Link href={"https://github.com/theogainey/cloud-one-link"}><a target="_blank" rel="noopener noreferrer"  className={styles.link}>GitHub page</a></Link>for more!   </p>
           </div >
         </div>
 
