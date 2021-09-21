@@ -60,6 +60,13 @@
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+  .left{
+    padding-left: 1rem;
+    padding-right: .5rem;
+  }
+  .middle{
+    max-width: 90%;
+  }
   .right{
     width: 100%;
     display: flex;
