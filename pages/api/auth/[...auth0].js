@@ -6,7 +6,7 @@ export default handleAuth({
   async callback(req, res) {
 
     try {
-      await handleCallback(req, res, { redirectUri: 'https://cloud-one-link.vercel.app/dashboard' });
+      await handleCallback(req, res, { redirectUri: 'https://cloud-one-link-theogainey.vercel.app' });
     } catch (error) {
       res.status(error.status || 500).end(error.message);
     }
