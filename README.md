@@ -24,9 +24,9 @@ Application will not function properly beyond the index page without connecting 
 Once connected application can be started with: 
 ```bash
 npm run dev
+```
 
 Then Application can be opened a browser at http://localhost:3000/
-```
 ## Project Structure 
 - Framework - Next.js 
 - Database - MongoDB Atlas 
