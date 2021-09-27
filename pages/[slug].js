@@ -13,11 +13,7 @@ export default function LandingPage({data}){
       </Head>
       <div className={styles.linksSection}>
       <h1>{data.displayname}</h1>
-      {data.links.map((link) => (
-        <React.Fragment key={link.id}>
-          <LinkPublicView url={link.url} text={link.text}/>
-        </React.Fragment>
-      ))}
+      <SortedLinks links={data.links}/>
       </div>
       <footer className={styles.footer}>
         <div className={styles.copyright}>
@@ -85,4 +81,14 @@ export async function getStaticProps({ params }) {
     },
     revalidate: 10,
   }
+}
+function SortedLinks({links}){
+  const sortedLinks = links.sort((a, b) => a.rank - b.rank);
+  return(
+    sortedLinks.map((link) => (
+      <React.Fragment key={link.id}>
+        <LinkPublicView url={link.url} text={link.text}/>
+      </React.Fragment>
+    ))
+  )
 }
