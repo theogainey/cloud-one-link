@@ -83,7 +83,7 @@ export async function getStaticProps({ params }) {
   }
 }
 function SortedLinks({links}){
-  const sortedLinks = links.sort((a, b) => a.rank - b.rank);
+  const sortedLinks = links.sort((a, b) => a.priority - b.priority);
   return(
     sortedLinks.map((link) => (
       <React.Fragment key={link.id}>
