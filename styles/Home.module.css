@@ -8,6 +8,7 @@
   height: auto;
   width: 100vw;
   background-color: #fff;
+  overflow: hidden;
 }
 .surface{
   max-width: 900px;
@@ -103,6 +104,16 @@
 .copyright{
   margin: 1rem;
   padding: 1rem;
+}
+.linksSection{
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 }
 .footerButtonDiv{
   margin: 1rem;

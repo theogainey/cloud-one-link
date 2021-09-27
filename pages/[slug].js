@@ -11,12 +11,14 @@ export default function LandingPage({data}){
       <Head>
         <title>{data.displayname}</title>
       </Head>
+      <div className={styles.linksSection}>
       <h1>{data.displayname}</h1>
       {data.links.map((link) => (
         <React.Fragment key={link.id}>
           <LinkPublicView url={link.url} text={link.text}/>
         </React.Fragment>
       ))}
+      </div>
       <footer className={styles.footer}>
         <div className={styles.copyright}>
           <Link href={`/`} className={styles.footerButton}>
