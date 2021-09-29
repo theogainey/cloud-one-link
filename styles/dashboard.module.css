@@ -1,24 +1,4 @@
-.default{
-  --primary-color: #FFFFFF;
-  --primary-text: black;
-  --secondary-color: #FFFFFF;
-  --secondary-text: black;
-  --background-color: #FFFFFF;
-}
-.magGold{
-  --primary-color: #cf1578;
-  --primary-text: white;
-  --secondary-color: #039fbe;
-  --secondary-text: white;
-  --background-color: #e8d21d;
-}
-.redSeaFoam{
-  --primary-color: #d72631;
-  --primary-text: white;
-  --secondary-color: #5c3c92;
-  --secondary-text: white;
-  --background-color: #a2d5c6;
-}
+
 .root{
   margin-top: .1rem;
   width: 100vw;
@@ -74,7 +54,10 @@
   padding-left: .25rem;
   font-size: 1.25rem;
   color: #1976d2;
-
+}
+.pageviews{
+  font-size: 1.25rem;
+  text-align: center;
 }
 .addButton{
   background-color: inherit;

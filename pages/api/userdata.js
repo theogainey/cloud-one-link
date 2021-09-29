@@ -1,10 +1,11 @@
 import clientPromise from './../../lib/mongodb'
 import {ObjectID} from 'mongodb'
 import { withApiAuthRequired, getSession} from '@auth0/nextjs-auth0';
+import redis from './../../lib/redis'
 
 export default withApiAuthRequired(async function userHandler(req, res) {
   const {
-    query: { linkrank, linktext, linkurl, newrank },
+    query: { linkrank, linktext, linkurl, linkID, newrank },
     method,
   } = req
   const session = getSession(req, res);
@@ -16,7 +17,17 @@ export default withApiAuthRequired(async function userHandler(req, res) {
 
   switch (method) {
     case 'GET':
-        res.status(200).json({user});
+      if (linkID) {
+        let linkfeild = linkID.toString();
+        await redis.hget (user.slug, linkfeild, function(_, value) {
+          res.status(200).json({linkclicks: value});
+        });
+      }
+      else {
+        await redis.hget (user.slug, "pageviews", function(_, value) {
+          res.status(200).json({views:value , user});
+        });
+      }
       break
     case 'PUT':
       if (linkrank ) {
@@ -61,12 +72,15 @@ export default withApiAuthRequired(async function userHandler(req, res) {
     case 'POST': {
       if (linktext && linkurl) {
         var newlinks = user.links;
+        var newLinkID = new ObjectID();
         newlinks.push({
-          _id: new ObjectID(),
+          _id: newLinkID,
           rank: newlinks.length+1,
           text: linktext,
           url: linkurl
         })
+        var linkfeild = newLinkID.toString();
+        redis.hset (pageSlug, linkfeild, 0);
         const update = await usercollection.updateOne({email: email}, {$set: {links:newlinks}}, {upsert: true })
         res.status(404).json({ message: update })
 

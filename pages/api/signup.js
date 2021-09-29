@@ -1,6 +1,7 @@
 import clientPromise from './../../lib/mongodb'
 import {ObjectID} from 'mongodb'
 import { withApiAuthRequired, getSession} from '@auth0/nextjs-auth0';
+import redis from './../../lib/redis'
 
 export default withApiAuthRequired(async function userHandler(req, res) {
   const {
@@ -29,6 +30,7 @@ export default withApiAuthRequired(async function userHandler(req, res) {
     }
     const update = await client.db("cloudlandingpage").collection("users").insertOne(newuser);
     if (update) {
+      redis.hset (slug, "pageviews", 0);
       res.status(200).json({update})
     }
     else {

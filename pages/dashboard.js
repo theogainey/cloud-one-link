@@ -49,6 +49,7 @@ export default withPageAuthRequired(function Dashboard() {
             <>
               {(state==="edit") &&(<div className={styles.urlBox}>
                 <h2 className={styles.urlHeading}>Page URL: &nbsp;</h2> <Link href={`/${data.user.slug}`}><a className={styles.urltext}>{` http://cloud-one-link.vercel.app/${data.user.slug}`}</a></Link>
+                <p className={styles.pageviews}>{`page views: ${data.views}`}</p>
               </div>
               )}
               {(state==="edit") &&(<EditableLinksSorted links={data.user.links}/>)}
@@ -84,6 +85,7 @@ function EditableLinksSorted({links}){
     sortedLinks.map((link) => (
       <React.Fragment key={link._id}>
         <LinkEditable
+          linkID={link._id}
           maxrank={sortedLinks.length}
           rank={link.rank}
           url={link.url} text={link.text}/>

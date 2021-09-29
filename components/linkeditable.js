@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import styles from '../styles/componentstyles/linkeditable.module.css'
+import useSWR from "swr";
 
-export default function LinkEditable({url, text, rank, maxrank}){
+export default function LinkEditable({linkID, url, text, rank, maxrank}){
   const [linkText, setLinkText] = useState(text);
   const [linkUrl, setLinkUrl] = useState(url);
+  const { data, dataerror } = useSWR(`/api/userdata?linkID=${linkID}`);
 
   async function editLink(type){
     switch (type) {
@@ -50,6 +52,7 @@ export default function LinkEditable({url, text, rank, maxrank}){
         </div>
       </div>
       <div className={styles.middle}>
+        {data &&(<p>{`Link Clicks: ${data.linkclicks}`}</p>)}
         <input
           className={styles.textInput}
           type="text"

@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import Script from 'next/script'
 import styles from '../styles/Home.module.css'
 import LinkPublicView from '../components/linkpublicview'
 import clientPromise from './../lib/mongodb'
@@ -11,9 +12,15 @@ export default function LandingPage({data}){
       <Head>
         <title>{data.displayname}</title>
       </Head>
+      <Script
+        id="analytics"
+        onLoad={() => {
+          fetch(`/api/analytics?pageSlug=${data.slug}`, {method: 'PUT',});
+        }}
+      />
       <div className={styles.linksSection}>
       <h1>{data.displayname}</h1>
-      <SortedLinks links={data.links}/>
+      <SortedLinks pageSlug={data.slug} links={data.links}/>
       </div>
       <footer className={styles.footer}>
         <div className={styles.copyright}>
@@ -82,12 +89,12 @@ export async function getStaticProps({ params }) {
     revalidate: 10,
   }
 }
-function SortedLinks({links}){
+function SortedLinks({pageSlug, links}){
   const sortedLinks = links.sort((a, b) => a.priority - b.priority);
   return(
     sortedLinks.map((link) => (
       <React.Fragment key={link.id}>
-        <LinkPublicView url={link.url} text={link.text}/>
+        <LinkPublicView pageSlug={pageSlug} linkID={link.id} url={link.url} text={link.text}/>
       </React.Fragment>
     ))
   )
