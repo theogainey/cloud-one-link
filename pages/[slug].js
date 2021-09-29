@@ -1,23 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Script from 'next/script'
 import styles from '../styles/Home.module.css'
 import LinkPublicView from '../components/linkpublicview'
 import clientPromise from './../lib/mongodb'
 
 export default function LandingPage({data}){
+
+  useEffect(() => {
+    fetch(`/api/analytics?pageSlug=${data.slug}`, {method: 'PUT',});
+  });
   return(
     <div className={styles.container}>
       <Head>
         <title>{data.displayname}</title>
       </Head>
-      <Script
-        id="analytics"
-        onLoad={() => {
-          fetch(`/api/analytics?pageSlug=${data.slug}`, {method: 'PUT',});
-        }}
-      />
+
       <div className={styles.linksSection}>
       <h1>{data.displayname}</h1>
       <SortedLinks pageSlug={data.slug} links={data.links}/>
@@ -69,7 +67,7 @@ export async function getStaticProps({ params }) {
   var links=[]
   user.links.forEach((link, i) => {
     links.push({
-      id: i,
+      id: link._id.toString(),
       priority: link.rank,
       text: link.text,
       url: link.url

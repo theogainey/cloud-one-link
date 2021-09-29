@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function LinkPublicView({pageSlug, linkID, url, text}){
   function sendData(){
     if (linkID && pageSlug) {
-      fetch(`/api/analytics?pageSlug=${pageSlug}&linkID=${linkID}`, {method: 'PUT',});
+       fetch(`/api/analytics?pageSlug=${pageSlug}&linkID=${linkID}`, {method: 'PUT',});
     }
   }
   return (

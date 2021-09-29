@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, {useState, useReducer} from 'react';
 import Head from 'next/head'
 import Link from 'next/link'
 import {useUser, withPageAuthRequired} from '@auth0/nextjs-auth0';
@@ -47,10 +47,13 @@ export default withPageAuthRequired(function Dashboard() {
             {(data.user && state==="preview") && (  <h1 className={styles.title}>{data.user.displayname}</h1>)}
             {data.user.links && (
             <>
-              {(state==="edit") &&(<div className={styles.urlBox}>
+              {(state==="edit") &&(
+              <>
+              <div className={styles.urlBox}>
                 <h2 className={styles.urlHeading}>Page URL: &nbsp;</h2> <Link href={`/${data.user.slug}`}><a className={styles.urltext}>{` http://cloud-one-link.vercel.app/${data.user.slug}`}</a></Link>
-                <p className={styles.pageviews}>{`page views: ${data.views}`}</p>
               </div>
+              <p className={styles.pageviews}>{`Page Views: ${data.views}`}</p>
+              </>
               )}
               {(state==="edit") &&(<EditableLinksSorted links={data.user.links}/>)}
               {(state==="edit") &&(
