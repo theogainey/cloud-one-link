@@ -2,8 +2,8 @@ import {useState} from 'react';
 import styles from '../styles/componentstyles/newlink.module.css'
 
 export default function NewLink({setAddLink}){
-  const [linkText, setLinkText] = useState();
-  const [linkUrl, setLinkUrl] = useState();
+  const [linkText, setLinkText] = useState("Link Text");
+  const [linkUrl, setLinkUrl] = useState("Link URL");
   async function editLink(type){
     switch (type) {
       case 'save':

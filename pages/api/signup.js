@@ -13,24 +13,27 @@ export default withApiAuthRequired(async function userHandler(req, res) {
 
   if (method==='POST') {
     const client = await clientPromise
+    var newLinkID = new ObjectID();
     const newuser = {
-      _id: new ObjectID(),
+      _id: newLinkID,
       email: email,
       slug: slug,
       displayname: displayname,
       theme: "default",
       links: [
         {
-          _id: new ObjectID(),
+          _id: newLinkID,
           rank: 1,
-          text: " ",
-          url: " "
+          text: "Link Text ",
+          url: "Link URL "
         }
       ]
     }
     const update = await client.db("cloudlandingpage").collection("users").insertOne(newuser);
     if (update) {
+      var linkfeild = newLinkID.toString();
       redis.hset (slug, "pageviews", 0);
+      redis.hset (slug, linkfeild, 0);
       res.status(200).json({update})
     }
     else {

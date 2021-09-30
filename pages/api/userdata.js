@@ -80,7 +80,7 @@ export default withApiAuthRequired(async function userHandler(req, res) {
           url: linkurl
         })
         var linkfeild = newLinkID.toString();
-        redis.hset (pageSlug, linkfeild, 0);
+        redis.hset (user.slug, linkfeild, 0);
         const update = await usercollection.updateOne({email: email}, {$set: {links:newlinks}}, {upsert: true })
         res.status(404).json({ message: update })
 
