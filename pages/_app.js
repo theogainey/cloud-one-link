@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return(
     <UserProvider>
       <SWRConfig value={{  refreshInterval: 1000 , fetcher }}>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </SWRConfig>
     </UserProvider>
   )

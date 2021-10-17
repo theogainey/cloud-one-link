@@ -10,18 +10,18 @@ export default async function handler(req, res) {
       if (linkID && pageSlug) {
         let linkfeild = linkID.toString();
         await redis.hincrby (pageSlug, linkfeild, 1);
-        res.status(200).json({});
+        return res.status(200).json({});
       }
       else if (pageSlug) {
         await redis.hincrby (pageSlug, "pageviews", 1);
-        res.status(200).json({});
+        return res.status(200).json({});
       }
       else {
-        res.status(404).json({ message: `Invaild Arguments` })
+        return res.status(404).json({ message: `Invaild Arguments` })
       }
       break;
     default:
-      res.status(404).json({ message: `HTTTP Method Not Supported` });
+       return res.status(404).json({ message: `HTTTP Method Not Supported` });
       break;
   }
 }

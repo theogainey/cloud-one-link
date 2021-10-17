@@ -34,10 +34,10 @@ export default withApiAuthRequired(async function userHandler(req, res) {
       var linkfeild = newLinkID.toString();
       redis.hset (slug, "pageviews", 0);
       redis.hset (slug, linkfeild, 0);
-      res.status(200).json({update})
+      return res.status(200).json({update})
     }
     else {
-      res.status(404).json({ message: 'user profile not created' })
+      return res.status(404).json({ message: 'user profile not created' })
     }
   }
   else {

@@ -20,12 +20,12 @@ export default withApiAuthRequired(async function userHandler(req, res) {
       if (linkID) {
         let linkfeild = linkID.toString();
         await redis.hget (user.slug, linkfeild, function(_, value) {
-          res.status(200).json({linkclicks: value});
+        return  res.status(200).json({linkclicks: value});
         });
       }
       else {
         await redis.hget (user.slug, "pageviews", function(_, value) {
-          res.status(200).json({views:value , user});
+        return  res.status(200).json({views:value , user});
         });
       }
       break
@@ -34,23 +34,23 @@ export default withApiAuthRequired(async function userHandler(req, res) {
         var thislink = user.links.find((link)=>link.rank===(parseInt(linkrank)))
       }
       else {
-        res.status(404).json({ message: `Link not found` })
+        return res.status(404).json({ message: `Link not found` })
       }
       if (linktext && linkurl) {
           thislink.text=linktext
           thislink.url=linkurl
           const update = await usercollection.updateOne({email: email}, {$set: {links:user.links}}, {upsert: true })
-          res.status(200).json({update})
+          return res.status(200).json({update})
       }
       else if (linktext) {
         thislink.text=linktext
         const update = await usercollection.updateOne({email: email}, {$set: {links:user.links}}, {upsert: true })
-        res.status(200).json({update})
+        return res.status(200).json({update})
       }
       else if (linkurl) {
         thislink.url=linkurl
         const update = await usercollection.updateOne({email: email}, {$set: {links:user.links}}, {upsert: true })
-        res.status(200).json({update})
+        return res.status(200).json({update})
       }
       else if (newrank) {
         let parsedRank = parseInt(newrank)
@@ -59,14 +59,14 @@ export default withApiAuthRequired(async function userHandler(req, res) {
           otherlink.rank=parseInt(linkrank)
           thislink.rank=parsedRank
           const update = await usercollection.updateOne({email: email}, {$set: {links:user.links}}, {upsert: true })
-          res.status(200).json({update})
+          return res.status(200).json({update})
         }
         else {
-          res.status(404).json({ message: 'new link rank out of range' })
+          return res.status(404).json({ message: 'new link rank out of range' })
         }
       }
       else {
-        res.status(404).json({ message: `No parameters to update` })
+        return res.status(404).json({ message: `No parameters to update` })
       }
     break;
     case 'POST': {
@@ -82,13 +82,12 @@ export default withApiAuthRequired(async function userHandler(req, res) {
         var linkfeild = newLinkID.toString();
         redis.hset (user.slug, linkfeild, 0);
         const update = await usercollection.updateOne({email: email}, {$set: {links:newlinks}}, {upsert: true })
-        res.status(404).json({ message: update })
+        return res.status(404).json({ message: update })
 
       }
       else {
-        res.status(404).json({ message: `no link added` })
+        return res.status(404).json({ message: `no link added` })
       }
-
     }
     case 'DELETE':
       if (linkrank ) {
@@ -103,14 +102,13 @@ export default withApiAuthRequired(async function userHandler(req, res) {
           }
         });
         const update = await usercollection.updateOne({email: email}, {$set: {links:newlinks}}, {upsert: true })
-        res.status(200).json({update})
+        return res.status(200).json({update})
       }
       else {
-        res.status(404).json({ message: `Link not found` })
+        return res.status(404).json({ message: `Link not found` })
       }
       break;
     default:
-      res.status(405).end(`Method ${method} Not Allowed`)
+      return res.status(405).end(`Method ${method} Not Allowed`)
   }
-
 });
