@@ -9,6 +9,8 @@ export default function NewLink(){
 
   return (
     <>
+  {(state.display==='edit') && (
+    <>
     {(state.showNew==='false') && (
       <button className={styles.button} onClick={()=>dispatch({type: 'newLink'})}>
         Add Link
@@ -54,6 +56,8 @@ export default function NewLink(){
       </div>
     </div>
   )}
+  </>
+)}
   </>
   )
 }
