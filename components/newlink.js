@@ -10,7 +10,7 @@ export default function NewLink(){
   return (
     <>
     {(state.showNew==='false') && (
-      <button onClick={()=>dispatch({type: 'newLink'})}>
+      <button className={styles.button} onClick={()=>dispatch({type: 'newLink'})}>
         Add Link
       </button>
     )}
