@@ -8,6 +8,13 @@ export default function NewLink(){
   const urlRef = useRef(null);
 
   return (
+    <>
+    {(state.showNew==='false') && (
+      <button onClick={()=>dispatch({type: 'newLink'})}>
+        Add Link
+      </button>
+    )}
+    {(state.showNew==='true') && (
     <div className={styles.card}>
       <div className={styles.middle}>
         <div>
@@ -39,12 +46,14 @@ export default function NewLink(){
             <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm2 16H5V5h11.17L19 7.83V19zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM6 6h9v4H6z"/>
           </svg>
         </div>
-        <div  onClick={()=>dispatch({type: 'delete'})} >
+        <div  onClick={()=>dispatch({type: 'noNewLink'})} >
           <svg height="30" width="30" fill={"red"}>
             <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/>
           </svg>
         </div>
       </div>
     </div>
+  )}
+  </>
   )
 }

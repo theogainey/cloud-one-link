@@ -17,17 +17,20 @@ export default withApiAuthRequired(async function userHandler(req, res) {
 
   switch (method) {
     case 'GET':
-      if (linkID) {
-        let linkfeild = linkID.toString();
-        await redis.hget (user.slug, linkfeild, function(_, value) {
-        return  res.status(200).json({linkclicks: value});
+        const pipeline = redis.pipeline();
+        let dataobject= user;
+        dataobject.links.forEach((link) => {
+          let linkfeild = link._id.toString();
+          pipeline.hget (user.slug, linkfeild, function(_, value) {
+            link.linkclicks=value;
+          });
         });
-      }
-      else {
-        await redis.hget (user.slug, "pageviews", function(_, value) {
-        return  res.status(200).json({views:value , user});
+        pipeline.hget (user.slug, "pageviews", function(_, value) {
+          dataobject.views=value ;
         });
-      }
+        await pipeline.exec().then((result) => {
+          return  res.status(200).json({user: dataobject});
+        })
       break
     case 'PUT':
       if (linkrank ) {
