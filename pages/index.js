@@ -9,6 +9,8 @@ export default function Home() {
     <Layout >
     <div className={styles.container}>
       <Head>
+        <meta property="og:title" content="Cloud One-Link" />
+        <meta property="og:description" content="Web app that allows users to create and deploy a web page that organizes many links onto one page"/>
         <title>Cloud One-Link</title>
         <meta name="description" content="Created By Theo Gainey" />
         <link rel="icon" href="/favicon.ico" />
